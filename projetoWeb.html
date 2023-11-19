@@ -1,0 +1,99 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrabalhoWeb</title>
+    <link rel="stylesheet" href="Cadastro.css">
+</head>
+<body>
+    <header> 
+        <nav> 
+            <hr> 
+            <h1>FIVE SPORTS</h1> 
+            <div class="menu container">
+                <div class="menu__item">
+                <a class="menu__link" href ="./Home.html" >Home</a>
+                </div> 
+                <div class="menu__item" >
+                <a class="menu__link" href="./Feed.html" >Feed</a> 
+                </div>
+                <div class="menu__item">
+                <a class="menu__link" href="./Produtos.html" >Produtos</a> 
+                </div>
+                <div class="menu__item">
+                <a class="menu__link" href="./Cadastro.html" >Cadastro</a> 
+                </div>
+                <div class="menu__item">
+                <a class="menu__link" href="./Relatorio.html" >Relatórios</a > 
+                </div>
+            </div>
+            <hr>
+        </nav> 
+    </header> 
+    <main>
+        <section>
+            <h2>Cadastro</h2>
+            <form class="formulario" id="formulario">
+                <label for="Nome">Nome: </label>
+                <input type="text" id="Nome" name="Nome">
+                <label for="Endereço">Endereço: </label>
+                <input type="text" id="Endereço" name="Endereço">
+                <label for="Telefone">Telefone: </label>
+                <input type="text" id="Telefone" name="Telefone">
+                <label for="Email">E-mail: </label>
+                <input type="text" id="Email" name="Email">
+                <label for="Senha">Senha: </label>
+                <input type="password" id="Senha" name="Senha">
+                <label for="Confirmar senha">Confirmar Senha: </label>
+                <input type="password" id="ConfirmarSenha" name="ConfirmarSenha">
+                <div class="botoes">
+                    <button type="button" class="cor1" class="destacado1" id="botaoLimpar" onclick="limparCampos()">Limpar</button>
+                    <button type="button" class="cor2" class="destacado" id="botaoCadastrar" onclick="validarFormulario()">Cadastrar</button>
+                </div>
+            </form>
+
+        </section>
+    </main>
+    <script>
+    const formulario = document.getElementById('formulario');
+    const botaoCadastrar = document.getElementById('botaoCadastrar');
+    const botaoLimpar = document.getElementById('botaoLimpar');
+    function validarFormulario() {
+    const campos = ['Nome', 'Endereço', 'Telefone', 'Email', 'Senha', 'ConfirmarSenha'];
+
+    for (const campo of campos) {
+        const valorCampo = formulario[campo].value.trim();
+
+        if (valorCampo === '') {
+            alert(`Por favor, preencha o campo ${campo}.`);
+            return false;
+        }
+    }
+
+    const senha = formulario['Senha'].value;
+    const confirmarSenha = formulario['ConfirmarSenha'].value;
+
+    if (senha !== confirmarSenha) {
+        alert('As senhas não coincidem. Tente novamente.');
+        return false;
+    }
+
+    alert('Cliente cadastrado!');
+    return true;
+    }
+
+    function limparCampos () {
+        formulario.reset();
+        botaoCadastrar.classList.add('destacado');
+        botaoLimpar.classList.add('destacado1');
+    }
+    </script>
+</body>
+<footer>
+    <hr> 
+    <sup>©</sup>2023 - Todos os direitos reservados 
+</footer>
+</html>
